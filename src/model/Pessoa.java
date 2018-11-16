@@ -1,6 +1,7 @@
 package model;
 
 
+import javax.persistence.Embedded;
 
 public class Pessoa {
 
@@ -8,6 +9,7 @@ public class Pessoa {
 	private String cpf;
 	private int idade;
 	private String telefone;
+	@Embedded
 	private Endereco endereco;
 	
 	 public Pessoa(String nome, String cpf, int idade, String fone, Endereco end) {

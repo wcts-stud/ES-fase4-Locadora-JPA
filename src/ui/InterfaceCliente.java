@@ -2,101 +2,67 @@ package ui;
 
 import java.util.Scanner;
 
+import dao.ClienteDao;
 import model.Cliente;
 import model.Endereco;
 
 
 public class InterfaceCliente {
 
-	private Scanner entrada = new Scanner(System.in);
+	protected Scanner entrada = new Scanner(System.in);
 	
-	private void pulaLinhas() {
-		for (int i=0; i < 15; i++) {System.out.println("\n");}
-	}
-	
-	
-	public void menuPrincipal() {
-		
-		int op = 0;
-		
-		do {
-			System.out.println("\t MENU LOCADORA ");
-			System.out.println("1 - Inserir locação");
-			System.out.println("2 - Inserir DVD");
-			System.out.println("3 - Inserir cliente");
-			System.out.println("4 - Sair");
-			System.out.println("Opção: ");
-			
-			op = entrada.nextInt();
-			entrada.nextLine();
-			pulaLinhas();
-		} while ( op != 4);
 
+	private ClienteDao dao = new ClienteDao();
 		
-		switch (op) {
-			case 1: 
-				insereLocacao();
-				break;
-			case 2: 
-				insereDVD();
-				break;
-			case 3: 
-				insereCliente();
-				break;
-			case 4: 
-				System.exit(0);
-				break;
-			default:
-				break;
-		}
 		
-	}
-	
-	
-	
-	
-	public void insereCliente(){		
+	protected void insereCliente(){		
 		
-		System.out.println("\t INSERINDO CLIENTE \n\n"
+		System.out.print("\t INSERINDO CLIENTE \n\n"
 				+ "Informe o nome do cliente: ");
 		String nome = entrada.nextLine();
 		
-		System.out.println("Informe a idade de " +nome+ ": ");
+		System.out.print("Informe a idade de " +nome+ ": ");
 		int idade = entrada.nextInt();
 		entrada.nextLine();
 		
-		System.out.println("CPF de " +nome+ ": ");
+		System.out.print("CPF de " +nome+ ": ");
 		String cpf = entrada.nextLine();
 		
-		System.out.println("Telefone de " +nome+ ": ");
+		System.out.print("Telefone de " +nome+ ": ");
 		String fone = entrada.nextLine();
 		
-		System.out.println("Cidade de residencia: ");
+		System.out.print("Cidade de residencia: ");
 		String cidade = entrada.nextLine();
 		
-		System.out.println("Bairro de residencia: ");
+		System.out.print("Bairro de residencia: ");
 		String bairro = entrada.nextLine();
 		
-		System.out.println("Logradouro: ");
+		System.out.print("Logradouro: ");
 		String logradouro = entrada.nextLine();
 		
-		System.out.println("Numero residencia/apto: ");
+		System.out.print("Numero residencia/apto: ");
 		int nCasa = entrada.nextInt();
 		entrada.nextLine();
 		
 		
-		Endereco end = new Endereco(cidade, bairro, logradouro);
+		Endereco end = new Endereco(cidade, bairro, logradouro, nCasa);		
+		Cliente c = new Cliente(nome, cpf, idade, fone, end);
 		
-		
-		Cliente c = new Cliente(nome, cpf, idade, fone, end, nCasa);
-		
+		dao.salva(c);
 	}
 	
+	
 
-	public void insereDVD() {}
+	protected void insereDvd() {}
 	
 	
-	public void insereLocacao(){}
 	
+	protected void insereLocacao(){}
+	
+	
+	
+	protected void removeLocacao() {}
+	protected void removeDvd() {}
+	protected void removeCliente() {}
 	
 }

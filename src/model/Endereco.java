@@ -1,19 +1,21 @@
 package model;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 
-@Entity
+@Embeddable
 public class Endereco {
 	
 	private String cidade;
 	private String bairro;
 	private String logradouro;
+	private int numeroResidencia;
 	
-	public Endereco(String cidade, String bairro, String logradouro) {
+	public Endereco(String cidade, String bairro, String logradouro, int numeroResidencia) {
 		super();
 		this.cidade = cidade;
 		this.bairro = bairro;
 		this.logradouro = logradouro;
+		this.numeroResidencia = numeroResidencia;
 	}
 	
 	

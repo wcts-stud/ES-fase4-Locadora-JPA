@@ -11,7 +11,7 @@ public class ConnectionFactory {
 	public static EntityManager getEntityManager() {
 
 		if (emf == null) {
-			emf = Persistence.createEntityManagerFactory("meu-PU");
+			emf = Persistence.createEntityManagerFactory("my-PU");
 		}
 		
 

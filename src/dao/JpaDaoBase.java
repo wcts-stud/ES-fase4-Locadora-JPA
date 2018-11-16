@@ -20,6 +20,7 @@ public abstract class JpaDaoBase<T extends Bean> implements Dao<T> {
 		this.classe = (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
 	}
+	
 
 	public void salva(T t) {
 		em.getTransaction().begin();
@@ -29,6 +30,7 @@ public abstract class JpaDaoBase<T extends Bean> implements Dao<T> {
 			em.merge(t);
 		em.getTransaction().commit();
 	}
+	
 
 	public void remove(T t) {
 		em.getTransaction().begin();
@@ -36,22 +38,26 @@ public abstract class JpaDaoBase<T extends Bean> implements Dao<T> {
 		em.getTransaction().commit();
 	}
 
+	
 	public void atualiza(T t) {
 		em.getTransaction().begin();
 		em.merge(t);
 		em.getTransaction().commit();
 	}
+	
 
 	public List<T> listaTodos() {
 		Query query = ConnectionFactory.getEntityManager().createQuery(getQueryAll());
 		List<T> lista = query.getResultList();
 		return lista;
 	}
+	
 
 	public T buscaPorld(Long id) {
 		return (T) ConnectionFactory.getEntityManager().find(classe, id);
 	}
 
+	
 	public List<T> listaPaginada(int ini, int max) {
 		Query query = ConnectionFactory.getEntityManager().createQuery(getQueryAll());
 		query.setFirstResult(ini);
@@ -60,6 +66,7 @@ public abstract class JpaDaoBase<T extends Bean> implements Dao<T> {
 		return lista;
 	}
 
+	
 	protected String getQueryAll() {
 		return "select t from " + classe.getName()+ " t ";
 	}
