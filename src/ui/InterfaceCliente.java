@@ -54,9 +54,6 @@ public class InterfaceCliente {
 	
 
 	protected void insereDvd() {}
-	
-	
-	
 	protected void insereLocacao(){}
 	
 	

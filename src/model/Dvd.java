@@ -2,9 +2,11 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -14,7 +16,9 @@ public class Dvd extends Filme {
 	@GeneratedValue
 	private int id;
 	private int estoque;
-	@ManyToOne
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
 	

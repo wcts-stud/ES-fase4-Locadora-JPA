@@ -9,20 +9,6 @@ import ui.InterfacePrincipal;
 public class LocacaoTest {
 	
 	
-	
-	public static void main(String[] args) {
-		
-		EntityManager em = ConnectionFactory.getEntityManager();
-		
-		
-		em.getTransaction().begin();
-		
-		
-	}
-	
-	
-	
-	/*
 	public static void main(String[] args){
 		
 		
@@ -34,6 +20,6 @@ public class LocacaoTest {
 		
 		
 	}
-	*/
+
 
 }

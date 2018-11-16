@@ -13,15 +13,15 @@ import jpa.ConnectionFactory;
 public abstract class JpaDaoBase<T extends Bean> implements Dao<T> {
 
 	private final Class<T> classe;
-	protected EntityManager em = ConnectionFactory.getEntityManager();
+	public EntityManager em = ConnectionFactory.getEntityManager();
 
 	@SuppressWarnings("unchecked")
 	public JpaDaoBase() {
 		this.classe = (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
 	}
-	
 
+	
 	public void salva(T t) {
 		em.getTransaction().begin();
 		if (t.getId() == null)

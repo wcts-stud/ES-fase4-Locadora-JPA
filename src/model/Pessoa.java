@@ -2,9 +2,16 @@ package model;
 
 
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 
 public class Pessoa {
 
+	@Id
+	@GeneratedValue
+	private int id;
 	private String nome;
 	private String cpf;
 	private int idade;
