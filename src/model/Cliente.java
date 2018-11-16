@@ -12,11 +12,9 @@ import javax.persistence.OneToMany;
 import dao.Bean;
 
 @Entity
-public class Cliente extends Pessoa implements Bean {
+public class Cliente extends Pessoa {
 	
-	@Id
-	@GeneratedValue
-	private long id;
+	
 	private boolean locacao;
 	
 	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
@@ -38,7 +36,7 @@ public class Cliente extends Pessoa implements Bean {
 		this.locacao = locacao;
 	}	
 	
-
+	
 	public Dvd getFilmeLocado() {
 		return (Dvd) filmeLocado;
 	}
@@ -48,20 +46,6 @@ public class Cliente extends Pessoa implements Bean {
 	}
 
 
-
-	@Override
-	public Long getId() {
-		// TODO Auto-generated method stub
-		return id;
-	}
-
-
-
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-		
-	}
 	
 
 }

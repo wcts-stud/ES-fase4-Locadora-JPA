@@ -3,10 +3,14 @@ package model;
 //import java.sql.Date;
 import java.util.Date;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 public class Filme {
 	
 	private String titulo;
 	private String genero;
+	@Temporal(TemporalType.DATE)
 	private Date dataLancamento;
 	private long duracao;
 	
