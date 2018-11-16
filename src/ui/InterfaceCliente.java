@@ -5,6 +5,7 @@ import java.util.Scanner;
 import dao.ClienteDao;
 import model.Cliente;
 import model.Endereco;
+import model.Pessoa;
 
 
 public class InterfaceCliente {
@@ -46,6 +47,10 @@ public class InterfaceCliente {
 		
 		
 		Endereco end = new Endereco(cidade, bairro, logradouro, nCasa);		
+
+		Pessoa p = new Pessoa(nome, cpf, idade, fone, end);
+		
+		//Cliente c = new Cliente(p, end);
 		Cliente c = new Cliente(nome, cpf, idade, fone, end);
 		
 		dao.salva(c);
