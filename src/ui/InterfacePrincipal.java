@@ -1,11 +1,15 @@
 package ui;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
-import ui.InterfaceCliente;
+import ui.InterfaceUsuario;
 
 public class InterfacePrincipal {
 	
-	private InterfaceCliente ic = new InterfaceCliente();
+	private InterfaceUsuario ic = new InterfaceUsuario();
 	
 	
 	private void pulaLinhas() {
@@ -47,6 +51,9 @@ public class InterfacePrincipal {
 	 * Altera menu conforme o solicitado no metodo @menuPrincipal;
 	 */
 	private void menuEscolhido(String operacao) {
+		
+		// remove
+		teste();
 
 		int op = 0;
 		int multiplicador = 1;
@@ -105,7 +112,40 @@ public class InterfacePrincipal {
 	}
 	
 	
+	public Date formataData(String d){		
+
+		Date date = null;		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			date = df.parse(d);
+		} catch (ParseException e){
+			e.printStackTrace();
+		}		
+		
+		return date;
+	}
 	
 	
+	public Date dataAtual() {		
+		Date date = new Date();
+
+		/*
+		// Formata data;
+		String d = java.text.DateFormat.getDateInstance(DateFormat.MEDIUM).format(date);
+		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		
+		return (date = df.parse(d));
+		*/
+		
+		String dateS = java.text.DateFormat.getDateInstance(DateFormat.MEDIUM).format(date);
+		return formataData(dateS);
+	}
+	
+	
+	private void teste() {
+		Date data = new Date();
+		System.out.println(data);
+	}
 	
 }

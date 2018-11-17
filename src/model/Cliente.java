@@ -6,6 +6,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 
@@ -16,9 +19,15 @@ public class Cliente extends Pessoa {
 	
 	
 	private boolean locacao;
-	
-	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
+	/*
+	@OneToMany
+	@JoinColumns({
+		@JoinColumn(name="cliente_id"),
+		@JoinColumn(name="pessoa_id")
+	})
 	private List<Dvd> filmeLocado;
+	*/
+
 
 	public Cliente() {}
 	
@@ -38,7 +47,7 @@ public class Cliente extends Pessoa {
 		this.locacao = locacao;
 	}	
 	
-	
+	/*
 	public Dvd getFilmeLocado() {
 		return (Dvd) filmeLocado;
 	}
@@ -46,7 +55,7 @@ public class Cliente extends Pessoa {
 	public void setFilmeLocado(Dvd filmeLocado) {
 		this.filmeLocado = (List<Dvd>) filmeLocado;
 	}
-
+	*/
 
 	
 

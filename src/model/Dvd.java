@@ -14,14 +14,14 @@ public class Dvd extends Filme {
 	
 	private int estoque;
 	
+	/*
 	@ManyToOne(cascade=CascadeType.ALL)
-	/*
+	
 	@JoinColumn(name="cliente_id")
-	/*
 		@JoinColumn(name="cliente_id"),
 		@JoinColumn(name="pessoa_id")
-	*/
 	private Cliente cliente;
+	*/
 	
 	public Dvd() {}
 	

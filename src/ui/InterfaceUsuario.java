@@ -14,7 +14,7 @@ import model.Dvd;
 import model.Endereco;
 
 
-public class InterfaceCliente {
+public class InterfaceUsuario {
 
 	protected Scanner entrada = new Scanner(System.in);
 	
@@ -86,15 +86,7 @@ public class InterfaceCliente {
 		
 		System.out.print("Data de lançamento: ");
 		String dataEntrada = entrada.nextLine();
-		
-		Date lancamento = null;		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		try {
-			lancamento = df.parse(dataEntrada);
-		} catch (ParseException e){
-			e.printStackTrace();
-		}
-		
+		Date lancamento = new InterfacePrincipal().formataData(dataEntrada);
 		
 		System.out.print("Duração do filme: ");
 		long duracao = entrada.nextLong();
