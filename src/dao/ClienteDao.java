@@ -13,8 +13,7 @@ public class ClienteDao {
 	private EntityManager em = new ConnectionFactory().getEntityManager();
 	
 	
-	public void salva(Cliente c) {
-		
+	public void salva(Cliente c) {		
 		
 		try {
 			em.getTransaction().begin();

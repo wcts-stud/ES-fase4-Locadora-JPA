@@ -22,6 +22,7 @@ public class InterfacePrincipal {
 		int op = 0;
 		
 		do {
+			pulaLinhas();
 			System.out.println("\t MENU LOCADORA ");
 			System.out.println("1 - Inserir locação, cliente ou DVD");
 			System.out.println("2 - Remover locação, cliente ou DVD");
@@ -45,24 +46,24 @@ public class InterfacePrincipal {
 	/*
 	 * Altera menu conforme o solicitado no metodo @menuPrincipal;
 	 */
-	private void menuEscolhido(String menu) {
+	private void menuEscolhido(String operacao) {
 
 		int op = 0;
 		int multiplicador = 1;
 		
-		if ( menu == "i"){
-			menu = "Inserir";
-		} else if ( menu == "r") {
-			menu = "Remover";
+		if ( operacao == "i"){
+			operacao = "Inserir";
+		} else if ( operacao == "r") {
+			operacao = "Remover";
 			multiplicador = 5;
 		}
 		
 		
 		do {
 			System.out.println("\t SISTEMA ");
-			System.out.println("1 - " +menu+ " locação");
-			System.out.println("2 - " +menu+ " DVD");
-			System.out.println("3 - " +menu+ " cliente");
+			System.out.println("1 - " +operacao+ " locação");
+			System.out.println("2 - " +operacao+ " DVD");
+			System.out.println("3 - " +operacao+ " cliente");
 			System.out.println("4 - Sair");
 			System.out.print("Opção: ");
 			

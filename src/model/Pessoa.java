@@ -19,12 +19,15 @@ public class Pessoa {
 	private String telefone;
 	@Embedded
 	private Endereco endereco;
+
+	public Pessoa() {}
 	
 	 public Pessoa(String nome, String cpf, int idade, String fone, Endereco end) {
 		 this.nome = nome;
 		 this.idade = idade;
 		 this.cpf = cpf;
-		 telefone = fone;
+		 this.telefone = fone;
+		 this.endereco = end;
 	};
 	
 	

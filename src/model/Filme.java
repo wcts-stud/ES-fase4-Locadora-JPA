@@ -3,17 +3,25 @@ package model;
 //import java.sql.Date;
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@MappedSuperclass
 public class Filme {
 	
+	@Id
+	@GeneratedValue
+	private int id;
 	private String titulo;
 	private String genero;
 	@Temporal(TemporalType.DATE)
 	private Date dataLancamento;
 	private long duracao;
 	
+	public Filme() {}
 	
 	public Filme(String titulo, String genero, Date dataLancamento, long duracao) {
 		super();

@@ -10,8 +10,9 @@ public class Endereco {
 	private String logradouro;
 	private int numeroResidencia;
 	
+	public Endereco(){}
+	
 	public Endereco(String cidade, String bairro, String logradouro, int numeroResidencia) {
-		super();
 		this.cidade = cidade;
 		this.bairro = bairro;
 		this.logradouro = logradouro;
@@ -40,6 +41,14 @@ public class Endereco {
 	}
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
+	}
+	
+
+	public int getNumeroResidencia() {
+		return numeroResidencia;
+	}
+	public void setNumeroResidencia(int numeroResidencia) {
+		this.numeroResidencia = numeroResidencia;
 	}
 	
 }

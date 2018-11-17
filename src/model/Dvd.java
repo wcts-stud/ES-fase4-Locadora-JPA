@@ -12,19 +12,18 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Dvd extends Filme {
 	
-	@Id
-	@GeneratedValue
-	private int id;
 	private int estoque;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
+	/*
 	@JoinColumn(name="cliente_id")
 	/*
 		@JoinColumn(name="cliente_id"),
 		@JoinColumn(name="pessoa_id")
 	*/
 	private Cliente cliente;
-
+	
+	public Dvd() {}
 	
 	public Dvd(String titulo, String genero, Date dataLancamento, long duracao, int estoque) {
 		super(titulo, genero, dataLancamento, duracao);

@@ -20,10 +20,12 @@ public class Cliente extends Pessoa {
 	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
 	private List<Dvd> filmeLocado;
 
+	public Cliente() {}
+	
 	public Cliente(String nome, String cpf, int idade, String fone, Endereco endereco) {
 		super(nome, cpf, idade, fone, endereco);
 		this.locacao = false;
-		this.filmeLocado = null;
+		//this.filmeLocado = null;
 	}
 	
 	
