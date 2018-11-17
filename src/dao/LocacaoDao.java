@@ -1,20 +1,25 @@
 package dao;
 
+import java.util.List;
+
+import javax.management.Query;
 import javax.persistence.EntityManager;
 
-import jpa.ConnectionFactory;
-import model.Dvd;
+import org.hibernate.Session;
 
-public class DvdDao {
+import jpa.ConnectionFactory;
+import model.Locacao;
+
+public class LocacaoDao {
 
 	private EntityManager em = new ConnectionFactory().getEntityManager();
 	
 	
-	public void salva(Dvd dvd) {		
+	public void salva(Locacao l) {
 		
 		try {
 			em.getTransaction().begin();
-			em.persist(dvd);
+			em.persist(l);
 			em.getTransaction().commit();
 			
 		} catch (Exception e) {
@@ -22,32 +27,42 @@ public class DvdDao {
 		} finally {
 			em.close();
 		}
-		
 	}
 	
 	
+	
 	public void remove(int id) {
-		Dvd dvd = null;
+		Locacao l = null;
 		
-		try {
-			dvd = em.find(Dvd.class, id);
-			if ( dvd != null ){
+		try{ 
+			l = em.find(Locacao.class, id);
+			
+			if ( l != null ) {
 				em.getTransaction().begin();
-				em.remove(dvd);
+				em.remove(l);
 				em.getTransaction().commit();
 			} else {
-				System.out.println("\t Id " +id+ " de dvd não encontrado...");
+				System.out.println("\t Id " +id+ " de locação não encontrado...");
 			}
-			
 		} catch (Exception e) {
 			System.err.println("Erro: " +e);
 			em.getTransaction().rollback();
 		} finally {
 			em.close();
 		}
-		
-		
 	}
 	
+	
+/*
+	public Locacao listaTodos(){
+		Query query = Session.
+		List<Locacao> locacoes = Query.list();
+		
+		try {
+			
+		}
+		
+	}
+	*/
 	
 }

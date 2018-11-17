@@ -13,7 +13,7 @@ public class ClienteDao {
 	private EntityManager em = new ConnectionFactory().getEntityManager();
 	
 	
-	public void salva(Cliente c) {		
+	public void salva(Cliente c) {
 		
 		try {
 			em.getTransaction().begin();
@@ -22,6 +22,29 @@ public class ClienteDao {
 			
 		} catch (Exception e) {
 			System.err.println("Erro: " +e);;
+		} finally {
+			em.close();
+		}
+		
+	}
+	
+	
+	public void remove(int id){
+		Cliente c = null;
+		
+		try {
+			c = em.find(Cliente.class, id);
+		
+			if (c != null) {
+				em.getTransaction().begin();
+				em.remove(c);
+				em.getTransaction().commit();				
+			}
+			
+		} catch (Exception e) {
+			System.err.println("Erro na remocao de cliente: " +e);
+			em.getTransaction().rollback();
+			
 		} finally {
 			em.close();
 		}

@@ -19,14 +19,6 @@ public class Cliente extends Pessoa {
 	
 	
 	private boolean locacao;
-	/*
-	@OneToMany
-	@JoinColumns({
-		@JoinColumn(name="cliente_id"),
-		@JoinColumn(name="pessoa_id")
-	})
-	private List<Dvd> filmeLocado;
-	*/
 
 
 	public Cliente() {}
@@ -34,7 +26,6 @@ public class Cliente extends Pessoa {
 	public Cliente(String nome, String cpf, int idade, String fone, Endereco endereco) {
 		super(nome, cpf, idade, fone, endereco);
 		this.locacao = false;
-		//this.filmeLocado = null;
 	}
 	
 	
@@ -56,7 +47,6 @@ public class Cliente extends Pessoa {
 		this.filmeLocado = (List<Dvd>) filmeLocado;
 	}
 	*/
-
 	
 
 }

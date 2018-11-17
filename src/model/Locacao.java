@@ -36,20 +36,24 @@ public class Locacao {
 	// Um cliente tem muitas locações;
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
-	/*
-	@JoinColumns ({
-		@JoinColumn(name="locacao_id"),
-		@JoinColumn(name="cliente_id")
-	})
-	*/
 	private Cliente cliente;
+	
+	
+	
+	public Locacao() {}
+	
+	public Locacao(Date dataAluguel, Date dataDevolucao, Dvd dvd, Cliente cliente) {
+		this.aluguel = dataAluguel;
+		this.devolucao = dataDevolucao;
+		this.cliente = cliente;
+		this.dvd = dvd;
+	}
 	
 	
 	
 	public Date getAluguel() {
 		return aluguel;
 	}
-
 	public void setAluguel(Date aluguel) {
 		this.aluguel = aluguel;
 	}
@@ -58,13 +62,14 @@ public class Locacao {
 	public Date getDevolucao() {
 		return devolucao;
 	}
-	public void setDevolucao(Date devolucao) {
+	public void setDevolucao(Date devolucao) {		
 		this.devolucao = devolucao;
 	}
 
 	
 	public void setDvd(Dvd dvd) {
 		this.dvd = dvd;
+		//this.dvd.setEstoque(this.dvd.getEstoque() -1);
 	}	
 	public Dvd getDvd() {
 		return dvd;
@@ -76,6 +81,7 @@ public class Locacao {
 	}
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+		//this.cliente.setLocacao(true);
 	}
 	
 }

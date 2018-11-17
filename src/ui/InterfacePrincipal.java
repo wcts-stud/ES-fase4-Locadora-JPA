@@ -3,13 +3,16 @@ package ui;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
-import ui.InterfaceUsuario;
+import ui.InterfaceCliente;
 
 public class InterfacePrincipal {
 	
-	private InterfaceUsuario ic = new InterfaceUsuario();
+	private InterfaceCliente ic = new InterfaceCliente();
+	private InterfaceDvd id = new InterfaceDvd();
+	private InterfaceLocacao il = new InterfaceLocacao();
 	
 	
 	private void pulaLinhas() {
@@ -53,7 +56,7 @@ public class InterfacePrincipal {
 	private void menuEscolhido(String operacao) {
 		
 		// remove
-		teste();
+		//teste();
 
 		int op = 0;
 		int multiplicador = 1;
@@ -83,10 +86,10 @@ public class InterfacePrincipal {
 		
 		switch (op) {
 			case 1: 
-				ic.insereLocacao();
+				il.insereLocacao();
 				break;
 			case 2: 
-				ic.insereDvd();
+				id.insereDvd();
 				break;
 			case 3: 
 				ic.insereCliente();
@@ -96,10 +99,10 @@ public class InterfacePrincipal {
 				break;
 				
 			case 5: 
-				ic.removeLocacao();
+				il.removeLocacao();
 				break;
 			case 10: 
-				ic.removeDvd();
+				id.removeDvd();
 				break;
 			case 15: 
 				ic.removeCliente();
@@ -112,6 +115,10 @@ public class InterfacePrincipal {
 	}
 	
 	
+	/*
+	 * Formata data para o formato "dd/MM/yyyy",
+	 * retornando um Date;
+	 */
 	public Date formataData(String d){		
 
 		Date date = null;		
@@ -126,6 +133,10 @@ public class InterfacePrincipal {
 	}
 	
 	
+	/*
+	 * Retorna data de hoje em obj Date chamando 
+	 * metodo de formatacao da data;
+	 */
 	public Date dataAtual() {		
 		Date date = new Date();
 
@@ -141,6 +152,25 @@ public class InterfacePrincipal {
 		String dateS = java.text.DateFormat.getDateInstance(DateFormat.MEDIUM).format(date);
 		return formataData(dateS);
 	}
+	
+	
+	/*
+	 * Acrescenta 6 dias ao dia de hoje e retorna
+	 *  o objeto Date;
+	 */
+	public Date addDiasAData(int qtdDias) {
+		Date hoje = dataAtual();
+		Date data = null;
+		
+		Calendar c = Calendar.getInstance();
+		c.setTime(hoje);		
+		c.add(Calendar.DATE, +qtdDias);
+		
+		data = c.getTime();
+		
+		return data;
+	}
+	
 	
 	
 	private void teste() {

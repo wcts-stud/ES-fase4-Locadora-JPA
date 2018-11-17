@@ -30,14 +30,20 @@ public class Filme {
 		this.dataLancamento = dataLancamento;
 		this.duracao = duracao;
 	}
-
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	
 	public String getTitulo() {
 		return titulo;
 	}
-
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -46,8 +52,6 @@ public class Filme {
 	public String getGenero() {
 		return genero;
 	}
-
-
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
@@ -56,8 +60,6 @@ public class Filme {
 	public Date getDataLancamento() {
 		return dataLancamento;
 	}
-
-
 	public void setDataLancamento(Date dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
@@ -66,8 +68,6 @@ public class Filme {
 	public long getDuracao() {
 		return duracao;
 	}
-
-
 	public void setDuracao(long duracao) {
 		this.duracao = duracao;
 	}
