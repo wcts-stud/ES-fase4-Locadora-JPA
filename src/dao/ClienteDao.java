@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import jpa.ConnectionFactory;
 import model.Cliente;
+import model.Dvd;
 
 public class ClienteDao {
 	
@@ -50,6 +51,29 @@ public class ClienteDao {
 		}
 		
 	}
+	
+	
+	
+
+	/*
+	 * Read all
+	 */
+	public List<Cliente> listaTodos() {
+
+		List<Cliente> clientes = null;
+		
+		try {
+			clientes = em.createQuery("from Cliente d").getResultList();
+		} catch (Exception e) {
+			System.err.println("Erro RESULT LIST clientes: " +e);
+		} finally {
+			em.close();
+		}
+		
+		
+		return clientes;
+	}
+	
 	
 	
 	public List<Cliente> pesquisaPorNome(String nomeMarca) {

@@ -15,7 +15,7 @@ public class InterfacePrincipal {
 	private InterfaceLocacao il = new InterfaceLocacao();
 	
 	
-	private void pulaLinhas() {
+	protected static void pulaLinhas() {
 		for (int i=0; i < 2; i++) {System.out.println("\n");}
 	}
 	
@@ -33,18 +33,21 @@ public class InterfacePrincipal {
 			System.out.println("\t MENU LOCADORA ");
 			System.out.println("1 - Inserir locação, cliente ou DVD");
 			System.out.println("2 - Remover locação, cliente ou DVD");
-			System.out.println("3 - Sair");
+			System.out.println("3 - Listar locações, clientes ou DVDs");
+			System.out.println("4 - Sair");
 			System.out.print("Opção: ");
 			
 			op = ic.entrada.nextInt();
 			ic.entrada.nextLine();
 			pulaLinhas();
-		} while ( op <= 0 && op < 3);
+		} while ( op <= 0 && op < 4);
 		
 		if ( op == 1 ) {
 			menuEscolhido("i");
 		} else if ( op == 2 ) {
 			menuEscolhido("r");
+		} else if ( op == 3 ) {
+			menuEscolhido("l");
 		}
 
 	}
@@ -66,6 +69,9 @@ public class InterfacePrincipal {
 		} else if ( operacao == "r") {
 			operacao = "Remover";
 			multiplicador = 5;
+		} else if ( operacao == "l") {
+			operacao = "Listar";
+			multiplicador = 20;
 		}
 		
 		
@@ -106,6 +112,16 @@ public class InterfacePrincipal {
 				break;
 			case 15: 
 				ic.removeCliente();
+				break;
+
+			case 20:
+				il.listaTodosLocacao();
+				break;
+			case 40:
+				id.listaTodosDvd();
+				break;
+			case 60:
+				ic.listaTodosCliente();
 				break;
 				
 			default:

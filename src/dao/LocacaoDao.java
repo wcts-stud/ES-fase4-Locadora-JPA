@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import org.hibernate.Session;
 
 import jpa.ConnectionFactory;
+import model.Dvd;
 import model.Locacao;
 
 public class LocacaoDao {
@@ -42,7 +43,7 @@ public class LocacaoDao {
 				em.remove(l);
 				em.getTransaction().commit();
 			} else {
-				System.out.println("\t Id " +id+ " de locação não encontrado...");
+				System.out.println("\n\n\n\t Id " +id+ " de locação não encontrado...");
 			}
 		} catch (Exception e) {
 			System.err.println("Erro: " +e);
@@ -50,6 +51,22 @@ public class LocacaoDao {
 		} finally {
 			em.close();
 		}
+	}
+
+
+
+	public List<Locacao> listaTodos() {
+		List<Locacao> locacoes = null;
+		
+		try {
+			locacoes = em.createQuery("from Locacao l").getResultList();
+		} catch (Exception e) {
+			System.err.println("Erro RESULT LIST locacao: " +e);
+		} finally {
+			em.close();
+		}		
+		
+		return locacoes;
 	}
 	
 	

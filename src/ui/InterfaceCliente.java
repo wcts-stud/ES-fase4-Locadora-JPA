@@ -1,8 +1,12 @@
 package ui;
 
+import java.util.List;
+
 import dao.ClienteDao;
 import model.Cliente;
+import model.Dvd;
 import model.Endereco;
+import model.Locacao;
 
 
 public class InterfaceCliente extends InterfaceModelo {
@@ -73,6 +77,30 @@ public class InterfaceCliente extends InterfaceModelo {
 		int cliente_id = entrada.nextInt();
 		
 		clienteDao.remove(cliente_id);
+	}	
+	
+	
+
+	protected void listaTodosCliente() {
+		List<Cliente> clientes = clienteDao.listaTodos();
+		//String nome, String cpf, int idade, String fone, Endereco endereco) {
+
+		InterfacePrincipal.pulaLinhas();		
+		System.out.println("\t LISTA DE CLIENTES: ");
+		System.out.println("Id\t Nome\t\t CPF \t\t Idade\t Fone\t\t\t Endereço\n");
+				
+
+		for ( Cliente c: clientes ) {
+
+			System.out.println(c.getId()+ "\t " +c.getNome()+ "\t " +c.getCpf()+ "\t " +c.getIdade()+ 
+					"\t " +c.getTelefone()+ "\t\t " 
+					+c.getEndereco().getLogradouro()+ ", " +c.getEndereco().getNumeroResidencia()+ " - " 
+					+c.getEndereco().getCidade()+ ", " +c.getEndereco().getBairro()					
+					);
+		}
+		
+		
 	}
+	
 	
 }

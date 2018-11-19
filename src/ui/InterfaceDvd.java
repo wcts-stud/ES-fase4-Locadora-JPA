@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.Date;
+import java.util.List;
 
 import dao.DvdDao;
 import model.Dvd;
@@ -86,6 +87,25 @@ public class InterfaceDvd extends InterfaceModelo {
 			//Metodo dao remove por titulo
 		}
 		*/
+		
+	}
+	
+	
+	
+	protected void listaTodosDvd() {
+		
+		List<Dvd> dvd = dvdDao.listaTodos();
+		
+		InterfacePrincipal.pulaLinhas();		
+		System.out.println("\t LISTA DE DVDs: ");
+		System.out.println("Id\t Titulo\t Gênero\t Data de lançamento\t Duração\t Qtd. Estoque");
+		
+		
+		for ( Dvd d: dvd ) {
+
+			System.out.println(d.getId()+ "\t " +d.getTitulo()+ "\t " +d.getGenero()+ "\t " +d.getDataLancamento()+ 
+					"\t " +d.getDuracao()+ "\t\t\t " +d.getEstoque());
+		}
 		
 	}
 	

@@ -49,7 +49,15 @@ public class Locacao {
 		this.dvd = dvd;
 	}
 	
+		
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	
 	public Date getAluguel() {
 		return aluguel;
