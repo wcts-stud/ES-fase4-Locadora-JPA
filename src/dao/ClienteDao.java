@@ -1,25 +1,25 @@
 package dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
 import jpa.ConnectionFactory;
 import model.Cliente;
-import model.Dvd;
 
 public class ClienteDao {
 	
 	private EntityManager em = new ConnectionFactory().getEntityManager();
 	
-	
-	public void salva(Cliente c) {
+	/*
+	 * Create
+	 */
+	public String salva(Cliente c) {
+		String status = null;
 		
 		try {
 			em.getTransaction().begin();
 			em.persist(c);
 			em.getTransaction().commit();
+			status = "\n\t Inserido cliente com sucesso!!!";
 			
 		} catch (Exception e) {
 			System.err.println("Erro: " +e);;
@@ -27,34 +27,32 @@ public class ClienteDao {
 			em.close();
 		}
 		
+		return status;
 	}
 	
 	
-	public void remove(int id){
-		Cliente c = null;
+	/*
+	 * Read by Id
+	 */
+	public Cliente pesquisa(int id) {
+		Cliente c = new Cliente();
 		
-		try {
-			c = em.find(Cliente.class, id);
-		
-			if (c != null) {
-				em.getTransaction().begin();
-				em.remove(c);
-				em.getTransaction().commit();				
+		if ( id > 0 ){
+			
+			try { 
+				c = em.find(Cliente.class, id);
+			} catch (Exception e){
+				System.err.println("Erro READ cliente: " +e);
+			} finally {
+				//em.close();
 			}
 			
-		} catch (Exception e) {
-			System.err.println("Erro na remocao de cliente: " +e);
-			em.getTransaction().rollback();
-			
-		} finally {
-			em.close();
 		}
 		
+		return c;
 	}
 	
 	
-	
-
 	/*
 	 * Read all
 	 */
@@ -75,7 +73,64 @@ public class ClienteDao {
 	}
 	
 	
+	/*
+	 * Update
+	 */
+	public void atualiza(Cliente c) {
+		
+		try {
+			em.getTransaction().begin();
+			if (c.getId() > 0){
+				em.merge(c);
+				em.getTransaction().commit();
+			} else {
+				// Se o id informado não existir:
+				System.out.println("\n\n\nID não existe");
+			}
+		} catch (Exception e) {
+			System.err.println("Erro UPDATE cliente: " +e);
+			em.getTransaction().rollback();
+		} finally {
+			//em.close();
+		}
+		
+	}
 	
+	
+	/*
+	 * Delete
+	 */
+	public void remove(int id){		
+		Cliente c = null;
+				
+		try {
+			c = em.find(Cliente.class, id);
+		
+			if (c != null && c.isLocacao() == false) {
+				em.getTransaction().begin();
+				em.remove(c);
+				em.getTransaction().commit();				
+			} else {
+				System.err.println("\n\tFalha ao remover cliente, nulo ou possui locação");
+			}
+			
+		} catch (Exception e) {
+			System.err.println("Erro na remocao de cliente: " +e);
+			em.getTransaction().rollback();
+			
+		} finally {
+			em.close();
+		}
+		
+	}
+
+	
+	
+	
+	/*
+	 * Deletar para envio
+	 */
+	/*
 	public List<Cliente> pesquisaPorNome(String nomeMarca) {
 		Query q = em.createNamedQuery("Marca.pesquisaPorNome");
 		q.setParameter("nomeMarca", "%" + nomeMarca + "%");
@@ -87,5 +142,5 @@ public class ClienteDao {
 				       + " from Marca m ");
 		return q.getResultList();
 	}
-	
+	*/
 }

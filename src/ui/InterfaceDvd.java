@@ -45,10 +45,9 @@ public class InterfaceDvd extends InterfaceModelo {
 		
 		Dvd dvd = new Dvd(titulo, genero, lancamento, duracao, qtdEstoque);
 		
-		dvdDao.salva(dvd);
-	}
-	
-	
+		pulaLinhas();
+		System.out.println(dvdDao.salva(dvd));
+	}	
 	
 
 	
@@ -96,7 +95,7 @@ public class InterfaceDvd extends InterfaceModelo {
 		
 		List<Dvd> dvd = dvdDao.listaTodos();
 		
-		InterfacePrincipal.pulaLinhas();		
+		pulaLinhas();		
 		System.out.println("\t LISTA DE DVDs: ");
 		System.out.println("Id\t Titulo\t Gênero\t Data de lançamento\t Duração\t Qtd. Estoque");
 		

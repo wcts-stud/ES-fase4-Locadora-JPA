@@ -1,18 +1,13 @@
 package model;
 
 import java.util.Date;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Dvd extends Filme {
 	
 	private int estoque;
+	private boolean locacao = false;
 	
 	/*
 	@ManyToOne(cascade=CascadeType.ALL)
@@ -39,7 +34,13 @@ public class Dvd extends Filme {
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
+	
 
-
+	public boolean isLocacao() {
+		return locacao;
+	}
+	public void setLocacao(boolean locacao) {
+		this.locacao = locacao;
+	}
 	
 }

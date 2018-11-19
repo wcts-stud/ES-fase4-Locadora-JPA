@@ -2,20 +2,17 @@ package dao;
 
 import java.util.List;
 
-import javax.management.Query;
 import javax.persistence.EntityManager;
-
-import org.hibernate.Session;
-
 import jpa.ConnectionFactory;
-import model.Dvd;
 import model.Locacao;
 
 public class LocacaoDao {
 
 	private EntityManager em = new ConnectionFactory().getEntityManager();
 	
-	
+	/*
+	 * Create
+	 */
 	public void salva(Locacao l) {
 		
 		try {
@@ -31,30 +28,28 @@ public class LocacaoDao {
 	}
 	
 	
-	
-	public void remove(int id) {
+	/*
+	 * Read by Id 
+	 */
+	public Locacao pesquisa(int id) {
 		Locacao l = null;
 		
-		try{ 
-			l = em.find(Locacao.class, id);
-			
-			if ( l != null ) {
+		try {
+			if ( id > 0 ) {
 				em.getTransaction().begin();
-				em.remove(l);
-				em.getTransaction().commit();
-			} else {
-				System.out.println("\n\n\n\t Id " +id+ " de locação não encontrado...");
+				l = em.find(Locacao.class, id);
 			}
 		} catch (Exception e) {
-			System.err.println("Erro: " +e);
-			em.getTransaction().rollback();
-		} finally {
-			em.close();
+			System.err.println("Erro READ locacao: " +e);
 		}
+		
+		return l;
 	}
+	
 
-
-
+	/*
+	 * Read all;
+	 */
 	public List<Locacao> listaTodos() {
 		List<Locacao> locacoes = null;
 		
@@ -70,16 +65,38 @@ public class LocacaoDao {
 	}
 	
 	
-/*
-	public Locacao listaTodos(){
-		Query query = Session.
-		List<Locacao> locacoes = Query.list();
+	/*
+	 * Update
+	 */
+	// Non implement	
+	
+	
+	/*
+	 * Delete
+	 */
+	public void remove(int id) {
+		Locacao l = null;
+
 		
-		try {
+		try{
+			//em.getTransaction().begin();
+			l = em.find(Locacao.class, id);
 			
+			if ( l != null ) {
+				em.remove(l);
+				em.getTransaction().commit();
+			} else {
+				System.out.println("\n\n\n\t Id " +id+ " de locação não encontrado...");
+			}
+		} catch (Exception e) {
+			System.err.println("Erro: " +e);
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
-		
 	}
-	*/
+
+
+	
 	
 }

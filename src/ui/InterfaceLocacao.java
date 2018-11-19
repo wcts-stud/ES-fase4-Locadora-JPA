@@ -3,6 +3,7 @@ package ui;
 import java.util.Date;
 import java.util.List;
 
+import dao.ClienteDao;
 import dao.DvdDao;
 import dao.LocacaoDao;
 import model.Cliente;
@@ -16,6 +17,7 @@ public class InterfaceLocacao extends InterfaceModelo  {
 	
 	private DvdDao dvdDao = new DvdDao();
 	private LocacaoDao locacaoDao = new LocacaoDao();
+	private ClienteDao clienteDao = new ClienteDao();
 	
 
 	
@@ -23,6 +25,7 @@ public class InterfaceLocacao extends InterfaceModelo  {
 	
 	protected void insereLocacao(){
 		
+		pulaLinhas();
 		System.out.print("\t INSERINDO LOCAÇÃO \n\n"
 				+ "Informe id do filme: ");
 		int dvdId = entrada.nextInt();
@@ -32,23 +35,24 @@ public class InterfaceLocacao extends InterfaceModelo  {
 		int clienteId = entrada.nextInt();
 		entrada.nextLine();
 		
-		
-		InterfacePrincipal ip = new InterfacePrincipal();
-		
-		Date alugado = ip.dataAtual();
-		Date devolucao = ip.addDiasAData(6);
+				
+		Date alugado = dataAtual();
+		Date devolucao = addDiasAData(6);
 		
 		/*
 		 * issue #6
 		 */
-		cliente.setId(clienteId);
-		//cliente.setLocacao(true);
-		dvd.setId(dvdId);
-		//dvd.setEstoque(dvd.getEstoque() -1);
-		//dvdDao.atualiza(dvd);
+		cliente = clienteDao.pesquisa(clienteId);
+		cliente.setLocacao(true);
+		clienteDao.atualiza(cliente);
+		
+		dvd = dvdDao.pesquisa(dvdId);
+		dvd.setEstoque(dvd.getEstoque() -1);
+		dvd.setLocacao(true);
+		dvdDao.atualiza(dvd);
+
 		Locacao l = new Locacao(alugado, devolucao, dvd, cliente);
-		
-		
+				
 		locacaoDao.salva(l);
 		
 	}
@@ -57,12 +61,30 @@ public class InterfaceLocacao extends InterfaceModelo  {
 	
 	protected void removeLocacao() {
 		
+		pulaLinhas();
 		System.out.print("\t REMOVENDO LOCAÇÃO \n\n"
 				+ "Informe id da locação: ");
 		int locacaoId = entrada.nextInt();
 		entrada.nextLine();
 		
-		locacaoDao.remove(locacaoId);
+		try {
+			Locacao locacao = locacaoDao.pesquisa(locacaoId);
+			cliente = clienteDao.pesquisa(locacao.getCliente().getId());
+			cliente.setLocacao(false);
+			clienteDao.atualiza(cliente);
+			
+			dvd = dvdDao.pesquisa(locacao.getDvd().getId());
+			dvd.setEstoque(dvd.getEstoque() +1);
+			dvd.setLocacao(false);
+			dvdDao.atualiza(dvd);
+			
+			locacaoDao.remove(locacaoId);
+			
+			pulaLinhas();
+			System.out.println("\n\t Inserido locação com sucesso!");
+		} catch (Exception e) {
+			System.err.println("Erro DELETE locacao: " +e);
+		}
 		
 	}
 	
@@ -72,7 +94,7 @@ public class InterfaceLocacao extends InterfaceModelo  {
 
 		List<Locacao> locacao = locacaoDao.listaTodos();
 		
-		InterfacePrincipal.pulaLinhas();		
+		pulaLinhas();		
 		System.out.println("\t LISTA DE LOCAÇÕES: ");
 		System.out.println("Id\t Cliente\t Titulo filme\t\t Qtd. Dvds estoque");
 		

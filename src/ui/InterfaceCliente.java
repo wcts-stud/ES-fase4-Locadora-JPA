@@ -4,9 +4,7 @@ import java.util.List;
 
 import dao.ClienteDao;
 import model.Cliente;
-import model.Dvd;
 import model.Endereco;
-import model.Locacao;
 
 
 public class InterfaceCliente extends InterfaceModelo {
@@ -65,7 +63,8 @@ public class InterfaceCliente extends InterfaceModelo {
 		//Cliente c = new Cliente(p, end);
 		Cliente c = new Cliente(nome, cpf, idade, fone, end);
 		
-		clienteDao.salva(c);
+		pulaLinhas();
+		System.out.println(clienteDao.salva(c));
 	}
 	
 	
@@ -85,17 +84,17 @@ public class InterfaceCliente extends InterfaceModelo {
 		List<Cliente> clientes = clienteDao.listaTodos();
 		//String nome, String cpf, int idade, String fone, Endereco endereco) {
 
-		InterfacePrincipal.pulaLinhas();		
+		pulaLinhas();		
 		System.out.println("\t LISTA DE CLIENTES: ");
-		System.out.println("Id\t Nome\t\t CPF \t\t Idade\t Fone\t\t\t Endereço\n");
+		System.out.println("Id\t Nome\t\t CPF \t\t Idade\t Fone\t\t Aluguel\t\t Endereço\n");
 				
 
 		for ( Cliente c: clientes ) {
 
 			System.out.println(c.getId()+ "\t " +c.getNome()+ "\t " +c.getCpf()+ "\t " +c.getIdade()+ 
-					"\t " +c.getTelefone()+ "\t\t " 
+					"\t " +c.getTelefone()+ "\t " +c.isLocacao()+"\t\t " 
 					+c.getEndereco().getLogradouro()+ ", " +c.getEndereco().getNumeroResidencia()+ " - " 
-					+c.getEndereco().getCidade()+ ", " +c.getEndereco().getBairro()					
+					+c.getEndereco().getBairro()+ ", " +c.getEndereco().getCidade()
 					);
 		}
 		
