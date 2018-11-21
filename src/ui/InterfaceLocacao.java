@@ -47,7 +47,6 @@ public class InterfaceLocacao extends InterfaceModelo  {
 		clienteDao.atualiza(cliente);
 		
 		dvd = dvdDao.pesquisa(dvdId);
-		dvd.setEstoque(dvd.getEstoque() -1);
 		dvd.setLocacao(true);
 		dvdDao.atualiza(dvd);
 
@@ -74,7 +73,6 @@ public class InterfaceLocacao extends InterfaceModelo  {
 			clienteDao.atualiza(cliente);
 			
 			dvd = dvdDao.pesquisa(locacao.getDvd().getId());
-			dvd.setEstoque(dvd.getEstoque() +1);
 			dvd.setLocacao(false);
 			dvdDao.atualiza(dvd);
 			
@@ -96,12 +94,12 @@ public class InterfaceLocacao extends InterfaceModelo  {
 		
 		pulaLinhas();		
 		System.out.println("\t LISTA DE LOCAÇÕES: ");
-		System.out.println("Id\t Cliente\t Titulo filme\t\t Qtd. Dvds estoque");
+		System.out.println("Id\t Cliente\t Titulo filme\t\t Cod. Dvd");
 		
 		
 		for ( Locacao l: locacao ) {
 
-			System.out.println(l.getId()+ "\t " +l.getCliente().getNome()+ "\t " +l.getDvd().getTitulo()+ "\t\t\t " +l.getDvd().getEstoque());
+			System.out.println(l.getId()+ "\t " +l.getCliente().getNome()+ "\t " +l.getDvd().getFilme().getTitulo()+ "\t\t\t " +l.getDvd().getCod());
 		}
 		
 	}

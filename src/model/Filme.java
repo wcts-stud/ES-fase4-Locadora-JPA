@@ -1,15 +1,18 @@
 package model;
 
+import java.util.Collection;
 //import java.sql.Date;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@MappedSuperclass
+@Entity
 public class Filme {
 	
 	@Id
@@ -21,8 +24,18 @@ public class Filme {
 	private Date dataLancamento;
 	private long duracao;
 	
+	@OneToMany(
+		mappedBy="filme",
+		cascade = CascadeType.ALL
+		)
+	private Collection<Dvd> dvds;
+	//O que inserir em Dvd
+	
+	
+	
 	public Filme() {}
 	
+
 	public Filme(String titulo, String genero, Date dataLancamento, long duracao) {
 		super();
 		this.titulo = titulo;
@@ -30,9 +43,20 @@ public class Filme {
 		this.dataLancamento = dataLancamento;
 		this.duracao = duracao;
 	}
+
 	
 	
 	
+		
+	public Collection<Dvd> getDvds() {
+		return dvds;
+	}
+
+	public void setDvds(Collection<Dvd> dvds) {
+		this.dvds = dvds;
+	}
+	
+
 	public int getId() {
 		return id;
 	}

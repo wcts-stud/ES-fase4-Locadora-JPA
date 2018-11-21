@@ -4,11 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.hibernate.Session;
-
 import jpa.ConnectionFactory;
 import model.Dvd;
-import net.sf.ehcache.hibernate.HibernateUtil;
 
 public class DvdDao {
 
@@ -34,7 +31,7 @@ public class DvdDao {
 		
 		return status;
 	}
-		
+	
 	
 	/*
 	 * Read by Id
@@ -57,7 +54,7 @@ public class DvdDao {
 		return d;
 	}
 	
-		
+	
 	/*
 	 * Read all
 	 */
@@ -105,7 +102,7 @@ public class DvdDao {
 		
 	}
 	
-		
+	
 	/*
 	 * Delete
 	 */

@@ -1,38 +1,57 @@
 package model;
 
-import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Dvd extends Filme {
+public class Dvd {
 	
-	private int estoque;
+	@Id
+	@GeneratedValue
+	private int id;
+	private int cod;
 	private boolean locacao = false;
 	
-	/*
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name = "filme_id")
+	private Filme filme;
 	
-	@JoinColumn(name="cliente_id")
-		@JoinColumn(name="cliente_id"),
-		@JoinColumn(name="pessoa_id")
-	private Cliente cliente;
-	*/
 	
 	public Dvd() {}
 	
-	public Dvd(String titulo, String genero, Date dataLancamento, long duracao, int estoque) {
-		super(titulo, genero, dataLancamento, duracao);
-		this.estoque = estoque;
+	public Dvd(Filme filme, int cod, boolean locacao) {
+		this.cod = cod;
+		this.locacao = locacao;
 	}
 
 	
 	
-	public int getEstoque() {
-		return estoque;
+	
+	
+	public Filme getFilme() {
+		return filme;
+	}
+	public void setFilme(Filme filme) {
+		this.filme = filme;
 	}
 
-	public void setEstoque(int estoque) {
-		this.estoque = estoque;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+	public int getCod() {
+		return cod;
+	}
+	public void setCod(int cod) {
+		this.cod = cod;
 	}
 	
 

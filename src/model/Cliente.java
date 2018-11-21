@@ -1,23 +1,26 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 
 @Entity
-public class Cliente extends Pessoa {
-	
+public class Cliente extends Pessoa {	
 	
 	private boolean locacao;
 
+	
 
 	public Cliente() {}
 	
-	public Cliente(String nome, String cpf, int idade, String fone, Endereco endereco) {
-		super(nome, cpf, idade, fone, endereco);
+	public Cliente(String nome, String cpf, int idade, List<Telefone> fones, Endereco endereco) {
+		super(nome, cpf, idade, fones, endereco);
 		this.locacao = false;
-	}
-	
+	}	
 	
 
+	
+	
 	public boolean isLocacao() {
 		return locacao;
 	}
