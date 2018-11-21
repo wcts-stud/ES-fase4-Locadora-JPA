@@ -2,24 +2,13 @@ package dao;
 
 import java.util.List;
 
-import javax.management.Query;
+import javax.persistence.Query;
 import javax.persistence.EntityManager;
-import javax.transaction.Transaction;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
 
 import jpa.ConnectionFactory;
-import model.Dvd;
 import model.Filme;
-import net.sf.ehcache.hibernate.HibernateUtil;
-import net.sf.ehcache.search.expression.Criteria;
 
-public class FilmeDao {
-
-	private EntityManager em = new ConnectionFactory().getEntityManager();
+public class FilmeDao extends DaoBase {
 	
 	
 	/*
@@ -36,7 +25,7 @@ public class FilmeDao {
 		} catch (Exception e) {
 			System.err.println("Erro CREATE dvd: " +e);;
 		} finally {
-			//em.close();
+			//Non implement, implemented in other method
 		}
 		
 		return status;
@@ -69,17 +58,16 @@ public class FilmeDao {
 	/*
 	 * Read by name
 	 */
+	/*
 	public Filme pesquisaByName(String titulo){
 		Filme filme = null;
 		
-		/*
 		SessionFactory sfac = new Configuration().configure().buildSessionFactory();
         Session se = sfac.openSession();
         Transaction tx = (Transaction) se.beginTransaction();
         Criteria crit = (Criteria) se.createCriteria(Filme.class);
         crit.a
         (Restrictions.eq("titulo", titulo));
-        */
 		
 		//@SuppressWarnings("deprecation")
 		//SessionFactory sfac = new Configuration().configure().buildSessionFactory();
@@ -87,11 +75,14 @@ public class FilmeDao {
 		
         //Query select = em.createNamedQuery("from Filme as f where ilike f.titulo = :titulo");
 		
-
-		filme = (Filme) em.createQuery("from Filme where titulo = :titulo").getSingleResult();
+		em.getTransaction().begin();
+		Query q = (Query) em.createQuery("select m from Filme f where f.titulo ilike :titulo");
+		//q.setParameter("titulo", "%" + titulo + "%");
 		
+		System.out.println("QUERY: \n" +q);
 		return filme;
 	}
+	 */
 		
 	/*
 	 * Read all

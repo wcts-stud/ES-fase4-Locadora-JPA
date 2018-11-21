@@ -18,16 +18,14 @@ public class InterfaceLocacao extends InterfaceModelo  {
 	private DvdDao dvdDao = new DvdDao();
 	private LocacaoDao locacaoDao = new LocacaoDao();
 	private ClienteDao clienteDao = new ClienteDao();
-	
-
-	
+		
 
 	
 	protected void insereLocacao(){
 		
 		pulaLinhas();
 		System.out.print("\t INSERINDO LOCAÇÃO \n\n"
-				+ "Informe id do filme: ");
+				+ "Informe id do dvd: ");
 		int dvdId = entrada.nextInt();
 		entrada.nextLine();
 		
@@ -39,9 +37,7 @@ public class InterfaceLocacao extends InterfaceModelo  {
 		Date alugado = dataAtual();
 		Date devolucao = addDiasAData(6);
 		
-		/*
-		 * issue #6
-		 */
+		
 		cliente = clienteDao.pesquisa(clienteId);
 		cliente.setLocacao(true);
 		clienteDao.atualiza(cliente);
@@ -87,7 +83,7 @@ public class InterfaceLocacao extends InterfaceModelo  {
 	}
 	
 	
-
+	
 	protected void listaTodosLocacao() {
 
 		List<Locacao> locacao = locacaoDao.listaTodos();
@@ -99,9 +95,9 @@ public class InterfaceLocacao extends InterfaceModelo  {
 		
 		for ( Locacao l: locacao ) {
 
-			System.out.println(l.getId()+ "\t " +l.getCliente().getNome()+ "\t " +l.getDvd().getFilme().getTitulo()+ "\t\t\t " +l.getDvd().getCod());
+			System.out.println(l.getId()+ "\t " +l.getCliente().getPessoa().getNome()+ "\t " +l.getDvd().getFilme().getTitulo()+ "\t\t\t " +l.getDvd().getCod());
 		}
 		
-	}
+	}	
 	
 }

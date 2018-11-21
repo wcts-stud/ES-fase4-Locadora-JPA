@@ -7,10 +7,8 @@ import javax.persistence.EntityManager;
 import jpa.ConnectionFactory;
 import model.Dvd;
 
-public class DvdDao {
+public class DvdDao extends DaoBase {
 
-	private EntityManager em = new ConnectionFactory().getEntityManager();
-	
 	
 	/*
 	 * Create
@@ -46,7 +44,7 @@ public class DvdDao {
 			} catch (Exception e){
 				System.err.println("Erro READ dvd: " +e);
 			} finally {
-				//em.close();
+				// Non implement, implemented in other method;
 			}
 			
 		}

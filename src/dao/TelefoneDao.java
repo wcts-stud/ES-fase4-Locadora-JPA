@@ -26,7 +26,7 @@ public class TelefoneDao {
 			} catch (Exception e) {
 				System.err.println("Erro CREATE Telefone: " +e);;
 			} finally {
-				//em.close();
+				//Non implement, close in other method
 			}
 			
 			return status;

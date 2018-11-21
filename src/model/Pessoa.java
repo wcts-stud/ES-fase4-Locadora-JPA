@@ -19,7 +19,7 @@ public class Pessoa {
 	private String nome;
 	private String cpf;
 	private int idade;
-	//private String telefone;	// REMOVER
+	
 	@Embedded
 	private Endereco endereco;
 	
@@ -37,7 +37,7 @@ public class Pessoa {
 		 this.telefones = (Collection<Telefone>) fones;
 		 this.endereco = end;
 	};
-		
+	
 	
 	
 	public int getId() {

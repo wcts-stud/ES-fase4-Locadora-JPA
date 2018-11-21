@@ -25,9 +25,7 @@ public class Dvd {
 	public Dvd(Filme filme, int cod, boolean locacao) {
 		this.cod = cod;
 		this.locacao = locacao;
-	}
-
-	
+	}	
 	
 	
 	

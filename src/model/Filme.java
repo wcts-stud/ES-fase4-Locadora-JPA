@@ -26,10 +26,8 @@ public class Filme {
 	
 	@OneToMany(
 		mappedBy="filme",
-		cascade = CascadeType.ALL
-		)
+		cascade = CascadeType.ALL)
 	private Collection<Dvd> dvds;
-	//O que inserir em Dvd
 	
 	
 	
@@ -42,9 +40,7 @@ public class Filme {
 		this.genero = genero;
 		this.dataLancamento = dataLancamento;
 		this.duracao = duracao;
-	}
-
-	
+	}	
 	
 	
 		

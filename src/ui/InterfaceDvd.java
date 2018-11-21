@@ -14,6 +14,7 @@ public class InterfaceDvd extends InterfaceModelo {
 	private FilmeDao filmeDao = new FilmeDao(); 
 
 	protected void insereDvd() {
+		
 		/*
 		 * 
 		System.out.print("\t INSERINDO DVD \n\n"
@@ -44,28 +45,20 @@ public class InterfaceDvd extends InterfaceModelo {
 		
 		
 		Filme filme = new Filme(titulo, genero, lancamento, duracao);
+		Dvd dvd = new Dvd();
 		
+		/*
 		filmeDao.pesquisaByName(titulo);
 		System.out.println("Pesquisa por nome...");
 		System.exit(0);
+		*/
 		
 		filmeDao.salva(filme);
-		
-		/*
-		 * 
-		 * 
-		 * INSERI O FILME, DEPOIS COLOCO FILME EM DVD E INSIRO O DVD COM COD. 
-		 * 
-		 * 
-		 */
-		
-		Dvd dvd = new Dvd();
 		
 		dvd.setFilme(filme);
 		dvd.setCod(geraRandom());
 		dvd.setLocacao(false);
-		
-		
+				
 		pulaLinhas();
 		System.out.println(dvdDao.salva(dvd));
 	}	
@@ -118,7 +111,7 @@ public class InterfaceDvd extends InterfaceModelo {
 		
 		pulaLinhas();		
 		System.out.println("\t LISTA DE DVDs: ");
-		System.out.println("Id\t Titulo\t Gênero\t Data de lançamento\t Duração\t Cod. Dvd");
+		System.out.println("Id\t Titulo\t Gênero\t Data de lançamento\t Duração\t Cod. Dvd\n");
 		
 		
 		for ( Dvd d: dvd ) {
@@ -128,8 +121,5 @@ public class InterfaceDvd extends InterfaceModelo {
 		}
 		
 	}
-	
-	
-	
 	
 }

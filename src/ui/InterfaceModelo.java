@@ -10,8 +10,7 @@ import java.util.Scanner;
 
 public class InterfaceModelo {
 
-	protected Scanner entrada = new Scanner(System.in);
-	
+	protected Scanner entrada = new Scanner(System.in);	
 	
 	
 	protected void pulaLinhas() {

@@ -3,8 +3,6 @@ package model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Telefone {
@@ -16,7 +14,7 @@ public class Telefone {
 	private String numero;
 	
 	//@ManyToOne
-	//@JoinColumn(name="fk_pessoa", nullable=false)
+	//@JoinColumn(name="id_pessoa", nullable=false)
 	//private Pessoa pessoa;
 	
 	public Telefone() {}

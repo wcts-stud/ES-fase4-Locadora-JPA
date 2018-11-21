@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ClienteDao;
+import dao.PessoaDao;
 import dao.TelefoneDao;
 import model.Cliente;
 import model.Endereco;
@@ -15,6 +16,7 @@ public class InterfaceCliente extends InterfaceModelo {
 
 	private ClienteDao clienteDao = new ClienteDao();
 	private TelefoneDao telefoneDao = new TelefoneDao();
+	PessoaDao pessoaDao = new PessoaDao();
 		
 		
 	protected void insereCliente(){		
@@ -54,11 +56,25 @@ public class InterfaceCliente extends InterfaceModelo {
 		entrada.nextLine();
 		
 		*/
+
+		
+		// Teste //
+		
+		String nome = "Teste 1";
+		int idade = 19;
+		String cpf = "111.222.333-45";
+		
+		String fone1 = "41 90000-0000";
+		String fone2 = "42 91111-1111";
+		String fone3 = "43 99999-9999";
+		
+		String cidade = "Mafra";
+		String bairro = "Vila Nova";
+		String logradouro = "Av. Vila Nova";
+		int nCasa = 4567;
 		
 		
-		String fone1 = "41 90000-0000"; //Remover
-		String fone2 = "42 91111-1111"; //Remover
-		String fone3 = "43 99999-9999"; //Remover
+		
 		
 		Pessoa pessoa = new Pessoa();
 		Cliente c = new Cliente();
@@ -66,12 +82,10 @@ public class InterfaceCliente extends InterfaceModelo {
 		
 		
 		List<Telefone> telefones = new ArrayList<Telefone>();
-		//telefones.add(fone);
 		
 		if (fone1 != null){
 			fone.setCodArea(obtemDD(fone1));
 			fone.setNumero(obtemNumero(fone1));
-			//fone.setPessoa(pessoa);
 			
 			telefoneDao.salva(fone);
 			telefones.add(fone);
@@ -81,7 +95,6 @@ public class InterfaceCliente extends InterfaceModelo {
 			fone = new Telefone();;
 			fone.setCodArea(obtemDD(fone2));
 			fone.setNumero(obtemNumero(fone2));
-			//fone.setPessoa(pessoa);
 
 			telefoneDao.salva(fone);
 			telefones.add(fone);
@@ -91,32 +104,20 @@ public class InterfaceCliente extends InterfaceModelo {
 			fone = new Telefone();;
 			fone.setCodArea(obtemDD(fone3));
 			fone.setNumero(obtemNumero(fone3));
-			//fone.setPessoa(pessoa);
 
 			telefoneDao.salva(fone);
 			telefones.add(fone);
-		}
+		}		
 		
+		pessoa.setTelefones(telefones);		
 		
-		pessoa.setTelefones(telefones);
-		
-		
-		
-		String nome = "Teste 1";
-		int idade = 19;
-		String cpf = "111.222.333-45";		
-		String cidade = "Mafra";
-		String bairro = "Vila Nova";
-		String logradouro = "Av. Vila Nova";
-		int nCasa = 4567;
-		
-		Endereco end = new Endereco(cidade, bairro, logradouro, nCasa);		
+		Endereco end = new Endereco(cidade, bairro, logradouro, nCasa);	
 
-		//Pessoa p = new Pessoa(nome, cpf, idade, fone, end);		
-		//Cliente c = new Cliente(p, end);
+		pessoa = new Pessoa(nome, cpf, idade, telefones, end);
+		System.out.println(pessoaDao.salva(pessoa));
 		
-		c = new Cliente(nome, cpf, idade, telefones, end);
 		
+		c.setPessoa(pessoa);
 		pulaLinhas();
 		System.out.println(clienteDao.salva(c));
 	}
@@ -126,7 +127,7 @@ public class InterfaceCliente extends InterfaceModelo {
 		int ddFone = Integer.parseInt(fone.substring(0,2));
 		
 		return ddFone;
-	}
+	}	
 	
 	
 	private String obtemNumero(String numero) {
@@ -135,7 +136,8 @@ public class InterfaceCliente extends InterfaceModelo {
 		fone = numero.substring(2, numero.length());
 		
 		return fone;
-	}
+	}	
+	
 	
 	protected void removeCliente() {
 		System.out.print("\t REMOVENDO CLIENTE \n"
@@ -149,7 +151,6 @@ public class InterfaceCliente extends InterfaceModelo {
 
 	protected void listaTodosCliente() {
 		List<Cliente> clientes = clienteDao.listaTodos();
-		//String nome, String cpf, int idade, String fone, Endereco endereco) {
 
 		pulaLinhas();		
 		System.out.println("\t LISTA DE CLIENTES: ");
@@ -158,13 +159,12 @@ public class InterfaceCliente extends InterfaceModelo {
 
 		for ( Cliente c: clientes ) {
 
-			System.out.println(c.getId()+ "\t " +c.getNome()+ "\t " +c.getCpf()+ "\t " +c.getIdade()+ 
-					"\t " +c.getTelefones()+ "\t " +c.isLocacao()+"\t\t " 
-					+c.getEndereco().getLogradouro()+ ", " +c.getEndereco().getNumeroResidencia()+ " - " 
-					+c.getEndereco().getBairro()+ ", " +c.getEndereco().getCidade()
+			System.out.println(c.getId()+ "\t " +c.getPessoa().getNome()+ "\t " +c.getPessoa().getCpf()+ "\t " +c.getPessoa().getIdade()+ 
+					"\t " +c.getPessoa().getTelefones()+ "\t " +c.isLocacao()+"\t\t " 
+					+c.getPessoa().getEndereco().getLogradouro()+ ", " +c.getPessoa().getEndereco().getNumeroResidencia()+ " - " 
+					+c.getPessoa().getEndereco().getBairro()+ ", " +c.getPessoa().getEndereco().getCidade()
 					);
-		}
-		
+		}		
 		
 	}
 	

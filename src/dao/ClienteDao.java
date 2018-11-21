@@ -1,13 +1,9 @@
 package dao;
 
 import java.util.List;
-import javax.persistence.EntityManager;
-import jpa.ConnectionFactory;
 import model.Cliente;
 
-public class ClienteDao {
-	
-	private EntityManager em = new ConnectionFactory().getEntityManager();
+public class ClienteDao extends DaoBase {
 	
 	/*
 	 * Create
@@ -44,7 +40,7 @@ public class ClienteDao {
 			} catch (Exception e){
 				System.err.println("Erro READ cliente: " +e);
 			} finally {
-				//em.close();
+				// Non implement, implemented in other method;
 			}
 			
 		}
@@ -84,14 +80,14 @@ public class ClienteDao {
 				em.merge(c);
 				em.getTransaction().commit();
 			} else {
-				// Se o id informado não existir:
+				// Se o id informado não existir
 				System.out.println("\n\n\nID não existe");
 			}
 		} catch (Exception e) {
 			System.err.println("Erro UPDATE cliente: " +e);
 			em.getTransaction().rollback();
 		} finally {
-			//em.close();
+			//Non implement, close in other method
 		}
 		
 	}
@@ -123,7 +119,6 @@ public class ClienteDao {
 		}
 		
 	}
-
 	
 	
 	

@@ -20,6 +20,7 @@ public class Endereco {
 	}
 	
 	
+	
 	public String getCidade() {
 		return cidade;
 	}

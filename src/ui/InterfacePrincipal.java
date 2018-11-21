@@ -48,10 +48,6 @@ public class InterfacePrincipal extends InterfaceModelo {
 	 * Altera menu conforme o solicitado no metodo @menuPrincipal;
 	 */
 	private void menuEscolhido(String operacao) {
-		
-		// remove
-		//teste();
-
 		int op = 0;
 		int multiplicador = 1;
 		

@@ -52,7 +52,7 @@ public class Locacao {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	
 	public Date getAluguel() {
 		return aluguel;
