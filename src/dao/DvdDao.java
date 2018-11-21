@@ -4,16 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.hibernate.Session;
-
 import jpa.ConnectionFactory;
 import model.Dvd;
-import net.sf.ehcache.hibernate.HibernateUtil;
 
-public class DvdDao {
+public class DvdDao extends DaoBase {
 
-	private EntityManager em = new ConnectionFactory().getEntityManager();
-	
 	
 	/*
 	 * Create
@@ -34,7 +29,7 @@ public class DvdDao {
 		
 		return status;
 	}
-		
+	
 	
 	/*
 	 * Read by Id
@@ -49,7 +44,7 @@ public class DvdDao {
 			} catch (Exception e){
 				System.err.println("Erro READ dvd: " +e);
 			} finally {
-				//em.close();
+				// Non implement, implemented in other method;
 			}
 			
 		}
@@ -57,7 +52,7 @@ public class DvdDao {
 		return d;
 	}
 	
-		
+	
 	/*
 	 * Read all
 	 */
@@ -105,7 +100,7 @@ public class DvdDao {
 		
 	}
 	
-		
+	
 	/*
 	 * Delete
 	 */

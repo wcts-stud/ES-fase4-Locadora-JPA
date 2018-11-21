@@ -4,13 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 import dao.DvdDao;
+import dao.FilmeDao;
 import model.Dvd;
+import model.Filme;
 
 public class InterfaceDvd extends InterfaceModelo {
 	
 	private DvdDao dvdDao = new DvdDao();
+	private FilmeDao filmeDao = new FilmeDao(); 
 
 	protected void insereDvd() {
+		
 		/*
 		 * 
 		System.out.print("\t INSERINDO DVD \n\n"
@@ -38,13 +42,23 @@ public class InterfaceDvd extends InterfaceModelo {
 		String dataEntrada = "11/10/2010";
 		Date lancamento = new InterfacePrincipal().formataData(dataEntrada);
 		long duracao = 123;
-		int qtdEstoque = 3;
 		
 		
-		//Filme filme = new Filme(titulo, genero, lancamento, duracao);
+		Filme filme = new Filme(titulo, genero, lancamento, duracao);
+		Dvd dvd = new Dvd();
 		
-		Dvd dvd = new Dvd(titulo, genero, lancamento, duracao, qtdEstoque);
+		/*
+		filmeDao.pesquisaByName(titulo);
+		System.out.println("Pesquisa por nome...");
+		System.exit(0);
+		*/
 		
+		filmeDao.salva(filme);
+		
+		dvd.setFilme(filme);
+		dvd.setCod(geraRandom());
+		dvd.setLocacao(false);
+				
 		pulaLinhas();
 		System.out.println(dvdDao.salva(dvd));
 	}	
@@ -97,18 +111,15 @@ public class InterfaceDvd extends InterfaceModelo {
 		
 		pulaLinhas();		
 		System.out.println("\t LISTA DE DVDs: ");
-		System.out.println("Id\t Titulo\t Gênero\t Data de lançamento\t Duração\t Qtd. Estoque");
+		System.out.println("Id\t Titulo\t Gênero\t Data de lançamento\t Duração\t Cod. Dvd\n");
 		
 		
 		for ( Dvd d: dvd ) {
 
-			System.out.println(d.getId()+ "\t " +d.getTitulo()+ "\t " +d.getGenero()+ "\t " +d.getDataLancamento()+ 
-					"\t " +d.getDuracao()+ "\t\t\t " +d.getEstoque());
+			System.out.println(d.getId()+ "\t " +d.getFilme().getTitulo()+ "\t " +d.getFilme().getGenero()+ "\t " 
+					+d.getFilme().getDataLancamento()+ "\t " +d.getFilme().getDuracao()+ "\t\t\t " +d.getCod());
 		}
 		
 	}
-	
-	
-	
 	
 }

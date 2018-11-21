@@ -48,10 +48,6 @@ public class InterfacePrincipal extends InterfaceModelo {
 	 * Altera menu conforme o solicitado no metodo @menuPrincipal;
 	 */
 	private void menuEscolhido(String operacao) {
-		
-		// remove
-		//teste();
-
 		int op = 0;
 		int multiplicador = 1;
 		
@@ -62,7 +58,7 @@ public class InterfacePrincipal extends InterfaceModelo {
 			multiplicador = 5;
 		} else if ( operacao == "l") {
 			operacao = "Listar";
-			multiplicador = 20;
+			multiplicador = 21;
 		}
 		
 		
@@ -91,7 +87,8 @@ public class InterfacePrincipal extends InterfaceModelo {
 			case 3: 
 				ic.insereCliente();
 				break;
-			case 4: 
+			case 4|20|44:
+				System.out.println("\n\t Execução encerrada!!!");
 				System.exit(0);
 				break;
 				
@@ -105,13 +102,13 @@ public class InterfacePrincipal extends InterfaceModelo {
 				ic.removeCliente();
 				break;
 
-			case 20:
+			case 21:
 				il.listaTodosLocacao();
 				break;
-			case 40:
+			case 42:
 				id.listaTodosDvd();
 				break;
-			case 60:
+			case 63:
 				ic.listaTodosCliente();
 				break;
 				

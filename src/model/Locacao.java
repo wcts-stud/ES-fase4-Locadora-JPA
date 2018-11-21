@@ -52,7 +52,7 @@ public class Locacao {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	
 	public Date getAluguel() {
 		return aluguel;
@@ -72,7 +72,6 @@ public class Locacao {
 	
 	public void setDvd(Dvd dvd) {
 		this.dvd = dvd;
-		//this.dvd.setEstoque(this.dvd.getEstoque() -1);
 	}	
 	public Dvd getDvd() {
 		return dvd;
@@ -84,7 +83,6 @@ public class Locacao {
 	}
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-		//this.cliente.setLocacao(true);
 	}
 	
 }

@@ -1,5 +1,11 @@
 package dao;
 
-public interface DaoBase {
+import javax.persistence.EntityManager;
+
+import jpa.ConnectionFactory;
+
+public class DaoBase {
+	
+	protected EntityManager em = new ConnectionFactory().getEntityManager();
 
 }

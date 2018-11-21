@@ -2,13 +2,9 @@ package dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import jpa.ConnectionFactory;
 import model.Locacao;
 
-public class LocacaoDao {
-
-	private EntityManager em = new ConnectionFactory().getEntityManager();
+public class LocacaoDao extends DaoBase {
 	
 	/*
 	 * Create
@@ -95,8 +91,5 @@ public class LocacaoDao {
 			em.close();
 		}
 	}
-
-
-	
 	
 }

@@ -7,10 +7,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
+
 public class InterfaceModelo {
 
-	protected Scanner entrada = new Scanner(System.in);
-	
+	protected Scanner entrada = new Scanner(System.in);	
 	
 	
 	protected void pulaLinhas() {
@@ -73,7 +73,27 @@ public class InterfaceModelo {
 		data = c.getTime();
 		
 		return data;
-	}	
+	}
 	
+	
+	protected int geraRandom(){
+		int x = (int) (Math.random() * 1001);
+		
+		return x;
+	}
+	
+	/*
+	protected void verificaTelefone(String fone) {
+		Telefone telefone = new Telefone();
+
+		if (fone != null){
+			fone.setCodArea(obtemDD(fone));
+			fone.setNumero(obtemNumero(fone));
+			fone.setPessoa(pessoa);
+
+			telefones.add(fone);
+		}
+	}
+	*/
 	
 }
