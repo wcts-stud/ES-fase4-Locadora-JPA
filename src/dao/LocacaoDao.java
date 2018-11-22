@@ -75,7 +75,7 @@ public class LocacaoDao extends DaoBase {
 
 		
 		try{
-			//em.getTransaction().begin();
+			//em.getTransaction().begin(); // initializes to another method
 			l = em.find(Locacao.class, id);
 			
 			if ( l != null ) {

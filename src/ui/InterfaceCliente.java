@@ -171,7 +171,7 @@ public class InterfaceCliente extends InterfaceModelo {
 		pulaLinhas();		
 		System.out.println("\t LISTA DE CLIENTES: ");
 		System.out.println("Id\t Nome\t\t CPF \t\t"
-				+ "     Idade\t Fone\t\t\t"
+				+ "     Idade\t Fones\t\t\t"
 				+ "\t\t\t Aluguel\t\t Endereço\n");		
 				
 
@@ -186,8 +186,7 @@ public class InterfaceCliente extends InterfaceModelo {
 			System.out.println(c.getId()+ "\t " +c.getPessoa().getNome()+ "\t " +c.getPessoa().getCpf()+ "\t      " +c.getPessoa().getIdade()+ 
 					"\t" +fones[0]+ "," +fones[1]+ "," +fones[2]+ "\t " +c.isLocacao()+"\t\t " 
 					+c.getPessoa().getEndereco().getLogradouro()+ ", " +c.getPessoa().getEndereco().getNumeroResidencia()+ " - " 
-					+c.getPessoa().getEndereco().getBairro()+ ", " +c.getPessoa().getEndereco().getCidade()
-					);
+					+c.getPessoa().getEndereco().getBairro()+ ", " +c.getPessoa().getEndereco().getCidade());
 		}
 		
 	}	

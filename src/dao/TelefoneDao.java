@@ -37,21 +37,21 @@ public class TelefoneDao {
 		 * Read by Id
 		 */
 		public Telefone pesquisa(int id) {
-			Telefone d = new Telefone();
+			Telefone telefone = new Telefone();
 			
 			if ( id > 0 ){
 				
 				try { 
-					d = em.find(Telefone.class, id);
+					telefone = em.find(Telefone.class, id);
 				} catch (Exception e){
 					System.err.println("Erro READ Telefone: " +e);
 				} finally {
-					//em.close();
+					em.close();
 				}
 				
 			}
 			
-			return d;
+			return telefone;
 		}
 		
 		
@@ -60,10 +60,10 @@ public class TelefoneDao {
 		 */
 		public List<Telefone> listaTodos() {
 
-			List<Telefone> Telefones = null;
+			List<Telefone> telefone = null;
 			
 			try {
-				Telefones = em.createQuery("from Telefone d").getResultList();
+				telefone = em.createQuery("from Telefone d").getResultList();
 			} catch (Exception e) {
 				System.err.println("Erro RESULT LIST Telefone: " +e);
 			} finally {
@@ -71,7 +71,7 @@ public class TelefoneDao {
 			}
 			
 			
-			return Telefones;
+			return telefone;
 		}
 		
 		
@@ -79,26 +79,8 @@ public class TelefoneDao {
 		 * Update
 		 */
 		public void atualiza(Telefone Telefone) {
-			
-			try {
-				em.getTransaction().begin();
-				
-				if ( Telefone.getId() > 0 ){
-					em.merge(Telefone);
-					em.getTransaction().commit();
-				} else {
-					// Se o id informado não existir: 
-					//em.persist(Telefone);
-					System.out.println("\n\n\nID não existe");
-				}
-				
-			} catch (Exception e) {
-				System.err.println("Erro UPDATE Telefone: " +e);
-				em.getTransaction().rollback();
-				
-			} finally {
-				em.close();
-			}		
+
+			// Non implement
 			
 		}
 		
@@ -107,13 +89,13 @@ public class TelefoneDao {
 		 * Delete
 		 */
 		public void remove(int id) {
-			Telefone Telefone = null;
+			Telefone telefone = null;
 			
 			try {
-				Telefone = em.find(Telefone.class, id);
-				if (Telefone != null){
+				telefone = em.find(Telefone.class, id);
+				if (telefone != null){
 					em.getTransaction().begin();
-					em.remove(Telefone);
+					em.remove(telefone);
 					em.getTransaction().commit();
 				} else {
 					System.err.println("\n\n\t Falha ao remover Telefone, null ou possui locação");

@@ -40,7 +40,7 @@ public class InterfaceDvd extends InterfaceModelo {
 		String titulo = "Homem de ferro";
 		String genero = "Ação";
 		String dataEntrada = "11/10/2010";
-		Date lancamento = new InterfacePrincipal().formataData(dataEntrada);
+		Date lancamento = new InterfaceModelo().formataData(dataEntrada);
 		long duracao = 123;
 		
 		

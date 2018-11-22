@@ -46,17 +46,7 @@ public class Cliente {
 	}
 	public void setLocacao(boolean locacao) {
 		this.locacao = locacao;
-	}	
-	
-	/*
-	public Dvd getFilmeLocado() {
-		return (Dvd) filmeLocado;
 	}
-
-	public void setFilmeLocado(Dvd filmeLocado) {
-		this.filmeLocado = (List<Dvd>) filmeLocado;
-	}
-	*/
 	
 
 }

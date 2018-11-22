@@ -85,8 +85,7 @@ public class DvdDao extends DaoBase {
 				em.merge(dvd);
 				em.getTransaction().commit();
 			} else {
-				// Se o id informado não existir: 
-				//em.persist(dvd);
+				// Se o id informado não existir:
 				System.out.println("\n\n\nID não existe");
 			}
 			

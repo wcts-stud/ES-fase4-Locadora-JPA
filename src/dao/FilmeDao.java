@@ -33,7 +33,7 @@ public class FilmeDao extends DaoBase {
 		
 	
 	/*
-	 * Read by Id
+	 * Read by Id - no used
 	 */
 	public Filme pesquisa(int id) {
 		Filme f = new Filme();
@@ -45,7 +45,7 @@ public class FilmeDao extends DaoBase {
 			} catch (Exception e){
 				System.err.println("Erro READ filme: " +e);
 			} finally {
-				//em.close();
+				em.close();
 			}
 			
 		}

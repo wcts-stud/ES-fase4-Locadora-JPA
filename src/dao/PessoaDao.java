@@ -21,9 +21,7 @@ private EntityManager em = new ConnectionFactory().getEntityManager();
 		try {
 			em.getTransaction().begin();
 			em.persist(p);
-			em.getTransaction().commit();
-			//status = "\n\t Inserido pessoa com sucesso!!!";
-			
+			em.getTransaction().commit();			
 		} catch (Exception e) {
 			System.err.println("Erro: " +e);;
 		} finally {
