@@ -16,7 +16,6 @@ public class Telefone {
 	private String numero;
 	
 	@ManyToOne
-	//@JoinColumn(name="id_pessoa", nullable=false)
 	@JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
 	

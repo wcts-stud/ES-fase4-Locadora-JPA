@@ -75,7 +75,7 @@ public class InterfaceLocacao extends InterfaceModelo  {
 			locacaoDao.remove(locacaoId);
 			
 			pulaLinhas();
-			System.out.println("\n\t Inserido locação com sucesso!");
+			System.out.println("\n\t Locação removida com sucesso!");
 		} catch (Exception e) {
 			System.err.println("Erro DELETE locacao: " +e);
 		}

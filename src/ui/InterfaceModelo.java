@@ -43,15 +43,6 @@ public class InterfaceModelo {
 	 */
 	public Date dataAtual() {		
 		Date date = new Date();
-
-		/*
-		// Formata data;
-		String d = java.text.DateFormat.getDateInstance(DateFormat.MEDIUM).format(date);
-		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		
-		return (date = df.parse(d));
-		*/
 		
 		String dateS = java.text.DateFormat.getDateInstance(DateFormat.MEDIUM).format(date);
 		return formataData(dateS);
@@ -81,19 +72,5 @@ public class InterfaceModelo {
 		
 		return x;
 	}
-	
-	/*
-	protected void verificaTelefone(String fone) {
-		Telefone telefone = new Telefone();
 
-		if (fone != null){
-			fone.setCodArea(obtemDD(fone));
-			fone.setNumero(obtemNumero(fone));
-			fone.setPessoa(pessoa);
-
-			telefones.add(fone);
-		}
-	}
-	*/
-	
 }

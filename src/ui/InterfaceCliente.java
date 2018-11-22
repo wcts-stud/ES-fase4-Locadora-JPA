@@ -80,15 +80,7 @@ public class InterfaceCliente extends InterfaceModelo {
 		Cliente c = new Cliente();
 		Telefone fone = new Telefone();
 		Endereco end = new Endereco(cidade, bairro, logradouro, nCasa);	
-		
-		
-		/*
-		 * 
-		 * NECESSARIO PASSAR ID DE PESSOA PARA TELEFONE
-		 * 
-		 */
 
-		//pessoa = new Pessoa(nome, cpf, idade, telefones, end);
 		pessoa.setNome(nome);
 		pessoa.setIdade(idade);
 		pessoa.setCpf(cpf);

@@ -111,30 +111,11 @@ public class ClienteDao extends DaoBase {
 			
 		} catch (Exception e) {
 			System.err.println("Erro na remocao de cliente: " +e);
-			em.getTransaction().rollback();
+			//em.getTransaction().rollback();
 			
 		} finally {
 			em.close();
-		}
-		
+		}		
 	}
-	
-	
-	
-	/*
-	 * Deletar para envio
-	 */
-	/*
-	public List<Cliente> pesquisaPorNome(String nomeMarca) {
-		Query q = em.createNamedQuery("Marca.pesquisaPorNome");
-		q.setParameter("nomeMarca", "%" + nomeMarca + "%");
-		return q.getResultList();
-	}
-	
-	public List<Cliente> listaTodosSimplificado(){
-		Query q = em.createQuery(" select  new Marca(m.id, m.nome) "
-				       + " from Marca m ");
-		return q.getResultList();
-	}
-	*/
+
 }

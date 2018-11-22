@@ -118,7 +118,7 @@ public class DvdDao extends DaoBase {
 			
 		} catch (Exception e) {
 			System.err.println("Erro REMOVE dvd: " +e);
-			em.getTransaction().rollback();
+			//em.getTransaction().rollback();
 		} finally {
 			em.close();
 		}

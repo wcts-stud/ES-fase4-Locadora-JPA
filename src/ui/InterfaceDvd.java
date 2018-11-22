@@ -47,12 +47,6 @@ public class InterfaceDvd extends InterfaceModelo {
 		Filme filme = new Filme(titulo, genero, lancamento, duracao);
 		Dvd dvd = new Dvd();
 		
-		/*
-		filmeDao.pesquisaByName(titulo);
-		System.out.println("Pesquisa por nome...");
-		System.exit(0);
-		*/
-		
 		filmeDao.salva(filme);
 		
 		dvd.setFilme(filme);
@@ -73,34 +67,7 @@ public class InterfaceDvd extends InterfaceModelo {
 		entrada.nextLine();
 		
 		
-		dvdDao.remove(id);
-				
-		/*
-		 * 
-		System.out.print("\t EXCLUINDO DVD \n"
-				+ "1- Por Id\n"
-				+ "2- Por nome\n"
-				+ "  Opção: ");		
-		int op = entrada.nextInt();
-		
-		
-		if ( op == 1 ) {
-			System.out.print("Informe o id do DVD: ");
-			int id = entrada.nextInt();
-			entrada.nextLine();
-
-			dvdDao.remove(id);
-		}
-		
-		
-		if ( op == 2 ) {
-			System.out.print("Informe o titulo do DVD: ");
-			String titulo = entrada.nextLine();
-			
-			//Metodo dao remove por titulo
-		}
-		*/
-		
+		dvdDao.remove(id);		
 	}
 	
 	

@@ -25,7 +25,6 @@ public class Pessoa {
 	@OneToMany(
 	mappedBy="pessoa",
 	cascade = CascadeType.ALL)
-	//@JoinColumn(name = "pessoa_id")
 	private Collection<Telefone> telefones;
 	
 
